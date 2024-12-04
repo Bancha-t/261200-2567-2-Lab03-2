@@ -33,10 +33,10 @@ public class Patient{
     }
 
     public String getbloodGroup() {
-        String[] validBloodGroups = {"A", "B", "AB", "O"};
+        String[] validBloodGroups = {"A", "B", "AB", "O","A+", "B+", "AB+", "O+","A-", "B-", "AB-", "O-"};
         for (String group : validBloodGroups) {
-            if (group.equals(bloodGroup)) {
-                return bloodGroup;
+            if (group.equalsIgnoreCase(bloodGroup)) {
+                return bloodGroup.toUpperCase();
             }
         }
         return "Error (Invalid bloodGroup)";
@@ -72,11 +72,13 @@ public class Patient{
 
     public static void main(String[] args) {
         int currentYear = 2024; 
-        Patient patient = new Patient(1001, "John Doe", 1978, 175.5, 78.0, "098764", "A");
+        Patient patient = new Patient(1001, "Jonn Doe", 1978, 175.5, 78.0, "0987649999", "A");
         patient.displayDetails(currentYear);
-        Patient invalidPatient = new Patient(1002, "Joe Dohn", 1990, -160.0, -65.0,"098764", "A");
+        Patient invalidPatient = new Patient(1002, "Joe Dohn", 1990, -160.0, -65.0,"0987649999", "A");
         invalidPatient.displayDetails(currentYear); 
-        Patient invalidPatien1t = new Patient(1003, "Joe Dohn", -5, 0, -147,"0876A4", "C");
+        Patient invalidPatien1t = new Patient(1003, "Joe Dohn", -5, 0, -147,"0987649999", "C");
         invalidPatien1t.displayDetails(currentYear); 
-      }  
+        Patient invalidPatien2t = new Patient(1004, "Joe Dohn", 1901, 74, -147,"09876aA9999", "a+");
+        invalidPatien2t.displayDetails(currentYear); 
+    }  
 }
